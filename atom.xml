@@ -49,10 +49,10 @@
     <link href="https://monmiao.github.io/2017/03/09/hexo-user-guide/"/>
     <id>https://monmiao.github.io/2017/03/09/hexo-user-guide/</id>
     <published>2017-03-09T07:25:54.000Z</published>
-    <updated>2017-03-09T16:10:36.000Z</updated>
+    <updated>2017-03-09T16:23:14.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="1-安装node"><a href="#1-安装node" class="headerlink" title="1.安装node"></a>1.安装node</h3><h3 id="2-注册github"><a href="#2-注册github" class="headerlink" title="2.注册github"></a>2.注册github</h3><ul>
-<li>以上两步,我已经安装了,不懂得找度娘</li>
+<li>以上两步,我已经安装了,不懂得找度娘,或者留言.</li>
 </ul>
 <h3 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3.安装hexo"></a>3.安装hexo</h3><ul>
 <li>首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。命令: </li>
