@@ -1,28 +1,248 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>monmiao</title>
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
   
-  <link href="/atom.xml" rel="self"/>
+  <title>gulp搭建前端工作流 | monmiao</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   
-  <link href="https://monmiao.github.io/"/>
-  <updated>2017-03-14T03:34:51.000Z</updated>
-  <id>https://monmiao.github.io/</id>
+    <meta name="keywords" content="笔记," />
   
-  <author>
-    <name>monmiao</name>
+
+  <meta name="description" content="摘要
+这个项目基于上一篇“gulp搭建Es6环境项目指南”的基础上进行搭建,我会在原来的基础上进行修改,它可以进行sass编译,es6转es5,压缩js,压缩css,压缩图片,压缩html(这个好像没什么效果),解决js/css缓存问题,启动本地开发Web服务器,我用的是mac,配合charles手机可以进行访问(局域网下直接访问本机ip,注意开放端口/关闭防火墙,我是关闭防火墙没有成功,所以用c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp搭建前端工作流">
+<meta property="og:url" content="https://monmiao.github.io/2017/03/13/gulp-work-flow/index.html">
+<meta property="og:site_name" content="monmiao">
+<meta property="og:description" content="摘要
+这个项目基于上一篇“gulp搭建Es6环境项目指南”的基础上进行搭建,我会在原来的基础上进行修改,它可以进行sass编译,es6转es5,压缩js,压缩css,压缩图片,压缩html(这个好像没什么效果),解决js/css缓存问题,启动本地开发Web服务器,我用的是mac,配合charles手机可以进行访问(局域网下直接访问本机ip,注意开放端口/关闭防火墙,我是关闭防火墙没有成功,所以用c">
+<meta property="og:updated_time" content="2017-03-14T03:34:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp搭建前端工作流">
+<meta name="twitter:description" content="摘要
+这个项目基于上一篇“gulp搭建Es6环境项目指南”的基础上进行搭建,我会在原来的基础上进行修改,它可以进行sass编译,es6转es5,压缩js,压缩css,压缩图片,压缩html(这个好像没什么效果),解决js/css缓存问题,启动本地开发Web服务器,我用的是mac,配合charles手机可以进行访问(局域网下直接访问本机ip,注意开放端口/关闭防火墙,我是关闭防火墙没有成功,所以用c">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">menu</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">menu</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装gulp"><span class="toc-text">安装gulp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建项目目录"><span class="toc-text">新建项目目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目目录结构"><span class="toc-text">项目目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装相关插件"><span class="toc-text">安装相关插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建相关的文件"><span class="toc-text">创建相关的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gulpfile-js-内容如下"><span class="toc-text">gulpfile.js 内容如下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#task执行命令"><span class="toc-text">task执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github地址-gulp-workflow"><span class="toc-text">github地址: gulp-workflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-gulp-work-flow" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">gulp搭建前端工作流</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>monmiao</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://monmiao.github.io//2017/03/13/gulp-work-flow/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+        <i class="icon-comment"></i> 
+        <span class="ds-thread-count" data-thread-key="post-gulp-work-flow"><i class="fa fa-spinner fa-spin"></i></span> <!--条评论-->
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>gulp搭建前端工作流</title>
-    <link href="https://monmiao.github.io/2017/03/13/gulp-work-flow/"/>
-    <id>https://monmiao.github.io/2017/03/13/gulp-work-flow/</id>
-    <published>2017-03-13T10:48:23.000Z</published>
-    <updated>2017-03-14T03:34:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><ul>
+      <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><ul>
 <li>这个项目基于上一篇<a href="https://monmiao.github.io/2017/03/10/gulp-own-guide/">“gulp搭建Es6环境项目指南”</a>的基础上进行搭建,我会在原来的基础上进行修改,它可以进行sass编译,es6转es5,压缩js,压缩css,压缩图片,压缩html(这个好像没什么效果),解决js/css缓存问题,启动本地开发Web服务器,我用的是mac,配合charles手机可以进行访问(局域网下直接访问本机ip,注意开放端口/关闭防火墙,我是关闭防火墙没有成功,所以用charles进行代理).</li>
 </ul>
 <h3 id="安装gulp"><a href="#安装gulp" class="headerlink" title="安装gulp"></a>安装gulp</h3><ul>
@@ -50,127 +270,238 @@
 <h3 id="github地址-gulp-workflow"><a href="#github地址-gulp-workflow" class="headerlink" title="github地址: gulp-workflow"></a>github地址: <a href="https://github.com/marquessc/gulp-workflow" target="_blank" rel="external">gulp-workflow</a></h3><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
 <li>该文档是gulp入坑的记录,如果错误欢迎留言指正,如有转载,请注明出处,谢谢.</li>
 </ul>
-]]></content>
+
     
-    <summary type="html">
-    
-      &lt;h3 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;这个项目基于上一篇&lt;a href=&quot;https://monmiao.github.io/2017/03/10/gulp-own-
-    
-    </summary>
-    
-      <category term="技术" scheme="https://monmiao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="笔记" scheme="https://monmiao.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持monmiao</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wx.jpeg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-ali.jpeg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/03/10/gulp-own-guide/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
   
-  <entry>
-    <title>gulp搭建Es6环境项目指南</title>
-    <link href="https://monmiao.github.io/2017/03/10/gulp-own-guide/"/>
-    <id>https://monmiao.github.io/2017/03/10/gulp-own-guide/</id>
-    <published>2017-03-10T07:18:22.000Z</published>
-    <updated>2017-03-10T18:26:03.000Z</updated>
+      <div class="fexo-comments comments-post">
     
-    <content type="html"><![CDATA[<ul>
-<li>这个项目最终想要得到的效果是可以预编译ES6,SCSS,压缩css,压缩js</li>
-<li>首先确认已经安装好node, 检查是否安装 node -v 如果能看到版本,表示已经安装成功.</li>
-</ul>
-<h3 id="安装gulp"><a href="#安装gulp" class="headerlink" title="安装gulp"></a>安装gulp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 全局安装Gulp</div><div class="line">$ npm install -g gulp</div><div class="line"># 在项目中安装Gulp</div><div class="line">$ npm install --save-dev gulp</div></pre></td></tr></table></figure>
-<ul>
-<li>运行gulp -v,如果不报错，表示安装成功.</li>
-</ul>
-<h3 id="新建项目目录-比如gulp-pro-在命令行中进入到改项目目录-执行"><a href="#新建项目目录-比如gulp-pro-在命令行中进入到改项目目录-执行" class="headerlink" title="新建项目目录,比如gulp-pro,在命令行中进入到改项目目录,执行"></a>新建项目目录,比如gulp-pro,在命令行中进入到改项目目录,执行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在项目中安装Gulp</span></div><div class="line">$ npm install --save-dev gulp</div><div class="line"><span class="comment"># 让项目生产package.json文件</span></div><div class="line">$ npm init</div></pre></td></tr></table></figure>
-<h3 id="创建项目目录结构"><a href="#创建项目目录结构" class="headerlink" title="创建项目目录结构"></a>创建项目目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">-------------------gulp-pro</div><div class="line">|   |</div><div class="line">|   |--------------dist (该文件夹为打包生成的)</div><div class="line">|   |   |----------css</div><div class="line">|   |   |   |------index-xxxx.css</div><div class="line">|   |   |----------js</div><div class="line">|   |   |   |------index-xxxx.js</div><div class="line">|   |   |----------html</div><div class="line">|   |   |   |------index.html</div><div class="line">|   |</div><div class="line">|   |--------------src</div><div class="line">|   |   |----------scss</div><div class="line">|   |   |   |------index.scss</div><div class="line">|   |   |----------js</div><div class="line">|   |   |   |------index.js</div><div class="line">|   |   |----------html</div><div class="line">|   |   |   |------index.html</div><div class="line">|   |</div><div class="line">|   |--------------gulpfile.js</div><div class="line">|   |--------------package.json</div></pre></td></tr></table></figure>
-<h3 id="安装相关插件"><a href="#安装相关插件" class="headerlink" title="安装相关插件"></a>安装相关插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装 Gulp 上 Babel 的插件</span></div><div class="line">$ npm install --save-dev gulp-babel</div><div class="line"><span class="comment"># 安装 Babel 上将 ES6 转换成 ES5 的插件</span></div><div class="line">$ npm install --save-dev babel-preset-es2015</div><div class="line"><span class="comment"># 安装 Gulp 上 uglify 压缩插件</span></div><div class="line">$ npm install --save-dev gulp-uglify</div><div class="line"><span class="comment"># 安装 Gulp 上 sass 插件</span></div><div class="line">$ npm install --save-dev gulp-sass</div><div class="line"><span class="comment"># 安装 Gulp 上 clean 插件</span></div><div class="line">$ npm install --save-dev gulp-clean</div><div class="line"><span class="comment"># 安装 Gulp 上 rev 插件</span></div><div class="line">$ npm install --save-dev gulp-rev</div><div class="line"><span class="comment"># 安装 Gulp 上 rev-collector 插件 </span></div><div class="line">$ npm install --save-dev gulp-rev-collector</div></pre></td></tr></table></figure>
-<h3 id="gulpfile-js-内容如下"><a href="#gulpfile-js-内容如下" class="headerlink" title="gulpfile.js 内容如下"></a>gulpfile.js 内容如下</h3><figure class="highlight plain"><figcaption><span>6</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&quot;gulp&quot;);</div><div class="line">var babel = require(&quot;gulp-babel&quot;);    // 用于ES6转化ES5</div><div class="line">var uglify = require(&apos;gulp-uglify&apos;); // 用于压缩 JS</div><div class="line">var sass = require(&apos;gulp-sass&apos;); //scss编译</div><div class="line">var rev = require(&apos;gulp-rev&apos;); //rev hash码</div><div class="line">var reCollector = require(&apos;gulp-rev-collector&apos;); //</div><div class="line">var clean = require(&apos;gulp-clean&apos;);//清空文件夹里所有的文件</div><div class="line">// ES6转化为ES5</div><div class="line">// 在命令行使用 gulp toes5 启动此任务</div><div class="line">gulp.task(&quot;toes5&quot;, () =&gt; &#123;</div><div class="line">    return gulp.src(&quot;src/js/*.js&quot;)// ES6 源码存放的路径</div><div class="line">        .pipe(babel())</div><div class="line">        .pipe(gulp.dest(&quot;dist/js&quot;)); //转换成 ES5 存放的路径</div><div class="line">&#125;);</div><div class="line">//scss编译</div><div class="line">gulp.task(&apos;css&apos;, () =&gt; &#123;</div><div class="line">    gulp.src(&apos;src/scss/*.scss&apos;)</div><div class="line">        .pipe(sass(&#123;</div><div class="line">            outputStyle: &apos;compressed&apos;               //编译并输出压缩过的文件</div><div class="line">        &#125;))</div><div class="line">        .pipe(rev())                                //给css添加哈希值</div><div class="line">        .pipe(gulp.dest(&apos;dist/css&apos;))</div><div class="line">        .pipe(rev.manifest())                       //给添加哈希值的文件添加到清单中</div><div class="line">        .pipe(gulp.dest(&apos;rev/css&apos;));</div><div class="line">&#125;);</div><div class="line">//压缩js</div><div class="line">gulp.task(&apos;js&apos;, () =&gt; &#123;</div><div class="line">    gulp.src(&apos;src/js/*.js&apos;)</div><div class="line">        .pipe(babel()) //转换成 ES5 </div><div class="line">        .pipe(uglify()) //压缩js</div><div class="line">        .pipe(rev()) //给js添加哈希值</div><div class="line">        .pipe(gulp.dest(&apos;dist/js&apos;))</div><div class="line">        .pipe(rev.manifest()) //给添加哈希值的文件添加到清单中</div><div class="line">        .pipe(gulp.dest(&apos;rev/js&apos;));</div><div class="line">&#125;);</div><div class="line">//将处理过的css，js引入html</div><div class="line">gulp.task(&apos;reCollector&apos;, () =&gt; &#123;</div><div class="line">    gulp.src([&apos;rev/**/*.json&apos;, &apos;src/html/*.html&apos;, &apos;src/html/**/*.html&apos;])</div><div class="line">        .pipe(reCollector(&#123;</div><div class="line">            replaceReved: true,  //模板中已经被替换的文件是否还能再被替换,默认是false</div><div class="line">            dirReplacements: &#123;   //标识目录替换的集合, 因为gulp-rev创建的manifest文件不包含任何目录信息,</div><div class="line">                &apos;css/&apos;: &apos;css/&apos;,</div><div class="line">                &apos;js/&apos;: &apos;js/&apos;</div><div class="line">            &#125;</div><div class="line">        &#125;))</div><div class="line">        .pipe(gulp.dest(&apos;dist/html&apos;))</div><div class="line">&#125;);</div><div class="line">//每次打包时先清空原有的文件夹</div><div class="line">gulp.task(&apos;clean&apos;, () =&gt; &#123;</div><div class="line">    gulp.src([&apos;dist&apos;, &apos;rev&apos;], &#123;read: false&#125;) //这里设置的dist表示删除dist文件夹及其下所有文件</div><div class="line">        .pipe(clean());</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="task执行命令"><a href="#task执行命令" class="headerlink" title="task执行命令"></a>task执行命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># gulp 任务名称</span></div><div class="line">$ gulp toes5 //转为es5</div><div class="line">$ gulp css //scss编译</div><div class="line">$ gulp js //js压缩</div><div class="line">$ gulp reCollector //替换html中的js/css文件</div><div class="line">$ gulp clean //清空文件</div></pre></td></tr></table></figure>
-<h3 id="github项目地址-https-github-com-monmiao-gulp-pro"><a href="#github项目地址-https-github-com-monmiao-gulp-pro" class="headerlink" title="github项目地址 https://github.com/monmiao/gulp-pro"></a>github项目地址 <a href="https://github.com/monmiao/gulp-pro" target="_blank" rel="external">https://github.com/monmiao/gulp-pro</a></h3><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
-<li>该文档是自己学习时的记录,如果错误欢迎留言指正,如有转载,请注明出处,谢谢.</li>
-</ul>
-]]></content>
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'monmiao';
     
-    <summary type="html">
+    var disqus_url = 'https://monmiao.github.io/2017/03/13/gulp-work-flow/';
     
-      &lt;ul&gt;
-&lt;li&gt;这个项目最终想要得到的效果是可以预编译ES6,SCSS,压缩css,压缩js&lt;/li&gt;
-&lt;li&gt;首先确认已经安装好node, 检查是否安装 node -v 如果能看到版本,表示已经安装成功.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;安装gulp&quot;&gt;&lt;a href=
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//monmiao.disqus.com/count.js" async></script>
+
+
+
     
-    </summary>
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-gulp-work-flow" 
+      data-title="gulp搭建前端工作流" data-url="https://monmiao.github.io/2017/03/13/gulp-work-flow/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"monmiao"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
     
-      <category term="技术" scheme="https://monmiao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="笔记" scheme="https://monmiao.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
+
+  </div>
+
   
-  <entry>
-    <title>Hello World</title>
-    <link href="https://monmiao.github.io/2017/03/10/hello-world/"/>
-    <id>https://monmiao.github.io/2017/03/10/hello-world/</id>
-    <published>2017-03-09T16:12:37.000Z</published>
-    <updated>2017-03-09T16:12:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="测试" scheme="https://monmiao.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>hexo使用指南(简单)</title>
-    <link href="https://monmiao.github.io/2017/03/09/hexo-user-guide/"/>
-    <id>https://monmiao.github.io/2017/03/09/hexo-user-guide/</id>
-    <published>2017-03-09T07:25:54.000Z</published>
-    <updated>2017-03-09T16:23:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-安装node"><a href="#1-安装node" class="headerlink" title="1.安装node"></a>1.安装node</h3><h3 id="2-注册github"><a href="#2-注册github" class="headerlink" title="2.注册github"></a>2.注册github</h3><ul>
-<li>以上两步,我已经安装了,不懂得找度娘,或者留言.</li>
-</ul>
-<h3 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3.安装hexo"></a>3.安装hexo</h3><ul>
-<li>首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。命令: </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cd blog</div><div class="line">$ sudo npm install -g hexo</div><div class="line">$ hexo init</div></pre></td></tr></table></figure>
-<ul>
-<li>执行完以上的命令后,就基本完成了初始化的工作,以后博客的所以操作都是blog的目录下面hexo相关命令(常用):</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ hexo init 初始化</div><div class="line">$ hexo generate (hexo g 也可以) 生成静态页面</div><div class="line">$ hexo server (hexo s 也可以) 启动本地服务 浏览器 http://localhost:4000 就可以预览</div><div class="line">$ hexo deploy 部署</div><div class="line">$ hexo new&quot;postName&quot; #新建文章</div><div class="line">$ hexo new page&quot;pageName&quot; #新建页面</div><div class="line">$ hexo generate #生成静态页面至public目录</div><div class="line">$ hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</div><div class="line">$ hexo deploy #将.deploy目录部署到GitHub</div><div class="line">$ hexo help # 查看帮助</div><div class="line">$ hexo version #查看Hexo的版本</div></pre></td></tr></table></figure>
-<h3 id="4-部署-此处省去github配置"><a href="#4-部署-此处省去github配置" class="headerlink" title="4.部署 (此处省去github配置)"></a>4.部署 (此处省去github配置)</h3><ul>
-<li>部署步骤,可按以下三步来进行:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo generate</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;1-安装node&quot;&gt;&lt;a href=&quot;#1-安装node&quot; class=&quot;headerlink&quot; title=&quot;1.安装node&quot;&gt;&lt;/a&gt;1.安装node&lt;/h3&gt;&lt;h3 id=&quot;2-注册github&quot;&gt;&lt;a href=&quot;#2-注册github&quot; class=&quot;
-    
-    </summary>
-    
-      <category term="技术" scheme="https://monmiao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="笔记" scheme="https://monmiao.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-</feed>
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
