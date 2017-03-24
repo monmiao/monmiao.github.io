@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>docker搭建springboot服务器笔记 | monmiao</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="笔记," />
+  
+
+  <meta name="description" content="简介1这个笔记是自己在docker搭建的大杂烩,可能不是docker的正确用法,欢迎讨论.请确认自己已经安装了docker,才可以根据本文档进行一步步的操作.我将会在拉去一个centos的镜像,并在centos中安装各种我们需要的应用(jdk,mysql,redis等),最后我会在这个服务中部署一个springboot的测试项目.接下来,我将会进行以下操作:
+拉取centos镜像1234567#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker搭建springboot服务器笔记">
+<meta property="og:url" content="https://monmiao.github.io/2017/03/20/docker-java-svr/index.html">
+<meta property="og:site_name" content="monmiao">
+<meta property="og:description" content="简介1这个笔记是自己在docker搭建的大杂烩,可能不是docker的正确用法,欢迎讨论.请确认自己已经安装了docker,才可以根据本文档进行一步步的操作.我将会在拉去一个centos的镜像,并在centos中安装各种我们需要的应用(jdk,mysql,redis等),最后我会在这个服务中部署一个springboot的测试项目.接下来,我将会进行以下操作:
+拉取centos镜像1234567#">
+<meta property="og:updated_time" content="2017-03-24T08:30:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker搭建springboot服务器笔记">
+<meta name="twitter:description" content="简介1这个笔记是自己在docker搭建的大杂烩,可能不是docker的正确用法,欢迎讨论.请确认自己已经安装了docker,才可以根据本文档进行一步步的操作.我将会在拉去一个centos的镜像,并在centos中安装各种我们需要的应用(jdk,mysql,redis等),最后我会在这个服务中部署一个springboot的测试项目.接下来,我将会进行以下操作:
+拉取centos镜像1234567#">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">menu</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">menu</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拉取centos镜像"><span class="toc-text">拉取centos镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装mysql"><span class="toc-text">安装mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装jdk"><span class="toc-text">安装jdk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装redis"><span class="toc-text">安装redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装maven"><span class="toc-text">安装maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装nginx"><span class="toc-text">安装nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装git"><span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker根据容器创建镜像"><span class="toc-text">docker根据容器创建镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交到网易蜂巢-指南"><span class="toc-text">提交到网易蜂巢 指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未完-待续…"><span class="toc-text">未完,待续…</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-docker-java-svr" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">docker搭建springboot服务器笔记</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>monmiao</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://monmiao.github.io//2017/03/20/docker-java-svr/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+        <i class="icon-comment"></i> 
+        <span class="ds-thread-count" data-thread-key="post-docker-java-svr"><i class="fa fa-spinner fa-spin"></i></span> <!--条评论-->
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这个笔记是自己在docker搭建的大杂烩,可能不是docker的正确用法,欢迎讨论.请确认自己已经安装了docker,才可以根据本文档进行一步步的操作.我将会在拉去一个centos的镜像,并在centos中安装各种我们需要的应用(jdk,mysql,redis等),最后我会在这个服务中部署一个springboot的测试项目.接下来,我将会进行以下操作:</div></pre></td></tr></table></figure>
+<h3 id="拉取centos镜像"><a href="#拉取centos镜像" class="headerlink" title="拉取centos镜像"></a>拉取centos镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 从网易蜂巢镜像中心拉去centos</span></div><div class="line">$ docker pull hub.c.163.com/public/centos:6.7-tools </div><div class="line"><span class="comment"># 启动</span></div><div class="line">$ docker run <span class="_">-d</span> -i -t &lt; IMAGE_ID &gt; /bin/bash</div><div class="line"><span class="comment"># 进入</span></div><div class="line">$ docker <span class="built_in">exec</span> -i -t &lt; IMAGE_ID &gt; /bin/bash</div><div class="line">$ docker stop|start &lt; CONTAINER_ID &gt;</div></pre></td></tr></table></figure>
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 进入docker容器中,安装mysql,等于是在centos6.7中安装一样</span></div><div class="line">$ yum install -y mysql-server mysql mysql-deve</div><div class="line">$ rpm -qi mysql-server <span class="comment">#查看mysql-server的版本信息,如下:</span></div><div class="line">Name        : mysql-server                 Relocations: (not relocatable)</div><div class="line">Version     : 5.1.73                            Vendor: CentOS</div><div class="line">Release     : 8.el6_8                       Build Date: Thu 26 Jan 2017 10:25:43 PM UTC</div><div class="line">Install Date: Mon 20 Mar 2017 08:32:23 AM UTC      Build Host: c1bm.rdu2.centos.org</div><div class="line">Group       : Applications/Databases        Source RPM: mysql-5.1.73-8.el6_8.src.rpm</div><div class="line">Size        : 25884131                         License: GPLv2 with exceptions</div><div class="line">Signature   : RSA/SHA1, Thu 26 Jan 2017 10:35:28 PM UTC, Key ID 0946fca2c105b9de</div><div class="line">Packager    : CentOS BuildSystem &lt;http://bugs.centos.org&gt;</div><div class="line">URL         : http://www.mysql.com</div><div class="line">Summary     : The MySQL server and related files</div><div class="line">Description :</div><div class="line">MySQL is a multi-user, multi-threaded SQL database server. MySQL is a</div><div class="line">client/server implementation consisting of a server daemon (mysqld)</div><div class="line">and many different client programs and libraries. This package contains</div><div class="line">the MySQL server and some accompanying files and directories.</div><div class="line"></div><div class="line">$ service mysqld start|stop|restart <span class="comment">#启动|关闭|重启</span></div></pre></td></tr></table></figure>
+<h3 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 进入docker容器中,安装jdk,等于是在centos6.7中安装一样</span></div><div class="line"><span class="comment"># 下载</span></div><div class="line">$ curl -O http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm <span class="comment">#这个少了auth下载不了</span></div><div class="line">$ curl -O http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.rpm?AuthParam=1490002480_af62e61bab6d497c2c58affbf1f6ac3b <span class="comment">#这可以下载但是会文件名称会带"?auth"的信息</span></div><div class="line"><span class="comment"># 下载完成之后,重名下,然后执行:</span></div><div class="line">$ rpm -ivh jdk-8u121-linux-x64.rpm <span class="comment">#进行安装</span></div><div class="line"><span class="comment"># 这个方式我也是第一次安装,后面不知道会遇到什么坑.</span></div><div class="line">$ java -version <span class="comment"># 版本信息:</span></div><div class="line">java version <span class="string">"1.8.0_121"</span></div><div class="line">Java(TM) SE Runtime Environment (build 1.8.0_121-b13)</div><div class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)</div><div class="line">说明安装成功</div></pre></td></tr></table></figure>
+<h3 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 下载</span></div><div class="line">$ wget http://download.redis.io/releases/redis-3.2.3.tar.gz</div><div class="line"><span class="comment"># 下载完成后解压</span></div><div class="line">$ tar -zxvf redis-3.2.3.tar.gz </div><div class="line"><span class="comment"># 安装</span></div><div class="line">$ make &amp;&amp; make install</div><div class="line"><span class="comment"># 这时候我发现安装不了(如果安装不了),少了这个gcc</span></div><div class="line">$ yum  install  gcc</div><div class="line"><span class="comment"># 安装完成之后再安装redis,然后修改下 ~/.bash_profile</span></div><div class="line">$ vi ~/.bash_profile <span class="comment">#添加,如下:</span></div><div class="line"><span class="comment">#redis</span></div><div class="line"><span class="built_in">export</span> REDIS_HOME=/usr/<span class="built_in">local</span>/redis</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$REDIS_HOME</span>/src</div><div class="line">$ <span class="built_in">source</span> ~/.bash_profile <span class="comment">#修改保存后记得source一下</span></div></pre></td></tr></table></figure>
+<h3 id="安装maven"><a href="#安装maven" class="headerlink" title="安装maven"></a>安装maven</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 下载</span></div><div class="line">$ wget https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz</div><div class="line"><span class="comment"># 解压</span></div><div class="line">$ tar -zxvf apache-maven-3.3.9-bin.tar.gz </div><div class="line">$ vi ~/.bash_profile <span class="comment">#添加,如下:</span></div><div class="line"><span class="comment">#maven</span></div><div class="line"><span class="built_in">export</span> M2_HOME=/usr/<span class="built_in">local</span>/apache-maven</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$M2_HOME</span>/bin</div><div class="line">$ <span class="built_in">source</span> ~/.bash_profile <span class="comment">#修改保存后记得source一下</span></div><div class="line">$ mvn mvn --version <span class="comment">#版本信息:</span></div><div class="line">Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T16:41:47+00:00)</div><div class="line">Maven home: /usr/<span class="built_in">local</span>/apache-maven</div><div class="line">Java version: 1.8.0_121, vendor: Oracle Corporation</div><div class="line">Java home: /usr/java/jdk1.8.0_121/jre</div><div class="line">Default locale: en_US, platform encoding: UTF-8</div><div class="line">OS name: <span class="string">"linux"</span>, version: <span class="string">"4.9.12-moby"</span>, arch: <span class="string">"amd64"</span>, family: <span class="string">"unix"</span></div></pre></td></tr></table></figure>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 下载</span></div><div class="line">$ wget https://nginx.org/download/nginx-1.10.1.tar.gz</div><div class="line"><span class="comment"># 安装各种相关的环境先</span></div><div class="line">$ yum install -y pcre pcre-devel</div><div class="line">$ yum install -y zlib zlib-devel</div><div class="line">$ yum install -y openssl openssl-devel</div><div class="line"><span class="comment"># 执行配置</span></div><div class="line">$ ./configure</div><div class="line"><span class="comment"># 安装</span></div><div class="line">$ make &amp;&amp; make install</div><div class="line">$ vi ~/.bash_profile <span class="comment">#添加,如下:</span></div><div class="line"><span class="comment">#nginx</span></div><div class="line"><span class="built_in">export</span> NGINX_HOME=/usr/<span class="built_in">local</span>/nginx</div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$NGINX_HOME</span>/sbin</div><div class="line">$ <span class="built_in">source</span> ~/.bash_profile <span class="comment"># 修改保存后记得source一下</span></div><div class="line">$ nginx -v <span class="comment"># 版本信息</span></div><div class="line">nginx version: nginx/1.10.1</div></pre></td></tr></table></figure>
+<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 感觉最简单的一个了</span></div><div class="line">$ yum install git </div><div class="line">$ git --version <span class="comment">#版本信息</span></div><div class="line">git version 1.7.1</div></pre></td></tr></table></figure>
+<p>到此基本安装完所需要的应用.</p>
+<h3 id="docker根据容器创建镜像"><a href="#docker根据容器创建镜像" class="headerlink" title="docker根据容器创建镜像"></a>docker根据容器创建镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打包成新的镜像</span></div><div class="line">$ docker commit -m <span class="string">"xxx"</span> <span class="_">-a</span> <span class="string">"xxx"</span> containerId resopsitory(目标镜像仓库、镜像名)</div><div class="line">-m：后面跟的是提交的信息</div><div class="line"><span class="_">-a</span>：后面跟的是作者。</div></pre></td></tr></table></figure>
+<h3 id="提交到网易蜂巢-指南"><a href="#提交到网易蜂巢-指南" class="headerlink" title="提交到网易蜂巢 指南"></a>提交到网易蜂巢 <a href="http://support.c.163.com/md.html#!容器服务/镜像仓库/使用指南/推送本地镜像.md" target="_blank" rel="external">指南</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker login -u [你的蜂巢邮箱帐号或手机号码] -p [你的蜂巢密码] <span class="_">-e</span> [你的邮箱] hub.c.163.com <span class="comment"># 登录蜂巢镜像仓库</span></div><div class="line">$ docker tag [镜像名或ID] hub.c.163.com/[你的用户名]/[标签名] <span class="comment"># 标记本地镜像</span></div><div class="line">$ docker push hub.c.163.com/[你的用户名]/[标签名] <span class="comment"># 推送至蜂巢镜像仓库</span></div></pre></td></tr></table></figure>
+<h3 id="未完-待续…"><a href="#未完-待续…" class="headerlink" title="未完,待续…"></a>未完,待续…</h3>
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持monmiao</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wx.jpeg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-ali.jpeg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/03/13/gulp-work-flow/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/03/24/IntelliJ-2017-Register/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'monmiao';
+    
+    var disqus_url = 'https://monmiao.github.io/2017/03/20/docker-java-svr/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//monmiao.disqus.com/count.js" async></script>
+
+
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-docker-java-svr" 
+      data-title="docker搭建springboot服务器笔记" data-url="https://monmiao.github.io/2017/03/20/docker-java-svr/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"monmiao"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
